@@ -23,8 +23,7 @@
 │   ├── app.log                          # лог веб-приложения
 │   └── errors.log                       # лог ошибок
 ├── notebooks                            # ноутбуки
-│   ├── data_analysis.ipynb              # анализ данных
-│   └── homework1_example.ipynb          # исходное задание
+│   └── data_analysis.ipynb              # анализ данных
 ├── src                                  # исходный код
 │   ├── config.py                        # конфигурация проекта
 │   ├── core                             # базовые компоненты

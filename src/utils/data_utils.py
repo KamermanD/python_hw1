@@ -41,10 +41,19 @@ def _analyze_city(df: pd.DataFrame, city: str) -> Dict:
                                            (city_df.loc[mask, 'temperature'] < stats[('temperature','mean')] - 2*stats[('temperature','std')]))
     return {'city': city, 'seasonal_stats': seasonal_stats, 'data': city_df}
 
+def _process_city_for_pool(df_dict, city):
+    import pandas as pd
+    return _analyze_city(pd.DataFrame(df_dict), city)
+
 def run_parallel_analysis(df: pd.DataFrame) -> Tuple[Dict, float]:
     cities = df['city'].unique()
     df_dict = df.to_dict('list')
     start = time.time()
+    # with Pool() as pool:
+    #     results = pool.starmap(lambda d, c: _analyze_city(pd.DataFrame(d), c), [(df_dict, c) for c in cities])
     with Pool() as pool:
-        results = pool.starmap(lambda d, c: _analyze_city(pd.DataFrame(d), c), [(df_dict, c) for c in cities])
+        results = pool.starmap(
+            _process_city_for_pool,
+            [(df_dict, c) for c in cities]
+        )
     return {r['city']: r for r in results}, time.time()-start
