@@ -1,9 +1,8 @@
-streamlit==1.19.0
-altair==4.2.2
-pandas==2.0.1
-matplotlib==3.7.1
-seaborn==0.13.2
-aiohttp==3.8.1
-aiofiles==23.1.0
-python-dotenv==1.2.2
-loguru==0.7.3
+pandas
+seaborn
+matplotlib
+aiohttp
+python-dotenv
+aiofiles
+streamlit
+loguru
