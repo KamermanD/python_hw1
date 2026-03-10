@@ -4,5 +4,5 @@ matplotlib
 aiohttp
 python-dotenv
 aiofiles
-streamlit
+streamlit>=1.30
 loguru
